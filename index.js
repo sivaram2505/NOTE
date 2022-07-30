@@ -20,19 +20,7 @@ mongoose.connect(process.env.MONGO_URL);
 const noteSchema = {title: String, content: String};
 const note = mongoose.model("note",noteSchema);
 
-app.get("/", function (req,res){
 
-    note.find((err,result) => {
-        if(err){
-            console.log(err);
-        } else{
-            res.json(result);
-
-            console.log("Responded to Get Request on /");
-            // console.log(result);
-        }
-    });
-});
 
 app.use(express.static(path.join(__dirname, "/client/build")));
 
