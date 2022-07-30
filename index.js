@@ -28,7 +28,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, "/client/build/index.html"));
 });
 }
-app.get("/getnotes", function (req,res){
+app.get("/", function (req,res){
 
     note.find((err,result) => {
         if(err){

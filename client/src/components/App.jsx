@@ -12,7 +12,7 @@ export default function App() {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    axios.get(url+"/getnotes")
+    axios.get(url+"/")
     .then((res)=>{
       setNotes(res.data);
     })
@@ -43,7 +43,7 @@ export default function App() {
     <div>
       <Header />
       <CreateArea onAdd={addNote} />
-      {notes.map((noteItem, index) => {
+      {notes && notes.map((noteItem, index) => {
         return (
           <Note
             key={index}
