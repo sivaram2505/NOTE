@@ -6,7 +6,7 @@ import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
 
-const url = "https://sleepy-hollows-86640.herokuapp.com";
+const url = "https://notes12345.herokuapp.com";
 
 export default function App() {
   const [notes, setNotes] = useState([]);
