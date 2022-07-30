@@ -21,14 +21,7 @@ const noteSchema = {title: String, content: String};
 const note = mongoose.model("note",noteSchema);
 
 
-if (process.env.NODE_ENV === 'production'){
-app.use(express.static(path.join(__dirname, "/client/build")));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, "/client/build/index.html"));
-});
-}
-app.get("/", function (req,res){
+app.get("/getnotes", function (req,res){
 
     note.find((err,result) => {
         if(err){
@@ -67,10 +60,18 @@ app.post("/delete", function(req,res){
         }
     });
 });
+if (process.env.NODE_ENV === 'production'){
+app.use(express.static(path.join(__dirname, "/client/build")));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/build/index.html"));
+});
+}
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 4000;
 }
+
 app.listen(port, function() {
     console.log("Node Server started on port 4000");
 });

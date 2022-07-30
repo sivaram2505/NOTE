@@ -12,7 +12,7 @@ export default function App() {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-    axios.get(url+"/")
+    axios.get(url+"/getnotes")
     .then((res)=>{
       setNotes(res.data);
     })
