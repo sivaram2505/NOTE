@@ -21,11 +21,25 @@ const noteSchema = {title: String, content: String};
 const note = mongoose.model("note",noteSchema);
 
 
-
+if (process.env.NODE_ENV === 'production'){
 app.use(express.static(path.join(__dirname, "/client/build")));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, "/client/build/index.html"));
+});
+}
+app.get("/getnotes", function (req,res){
+
+    note.find((err,result) => {
+        if(err){
+            console.log(err);
+        } else{
+            res.json(result);
+
+            console.log("Responded to Get Request on /");
+            // console.log(result);
+        }
+    });
 });
 
 app.post("/add", function(req,res){
