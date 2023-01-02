@@ -12,6 +12,8 @@ app.use(express.json());
 app.use(cors());
 dotenv.config();
 
+mongoose.set("strictQuery", false);
+
 mongoose.connect(process.env.MONGO_URL);
 
 //const db = mongoose.connection;
