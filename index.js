@@ -15,11 +15,6 @@ dotenv.config();
 <<<<<<< HEAD
 mongoose.connect(process.env.MONGO_URL, {
      useNewUrlParser: true});
-// mongoose.connect("mongodb+srv://ram25:ram25@cluster0.hpfnaob.mongodb.net/noteDB", {
-//     useNewUrlParser: true
-//     // useUnifiedTopology: true,
-//     // useCreateIndex: true
-// });
 
 // const db = mongoose.connection;
 // db.once('open', () => console.log("Successfully Connected to Database"));
