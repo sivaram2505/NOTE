@@ -12,17 +12,15 @@ app.use(express.json());
 app.use(cors());
 dotenv.config();
 
-<<<<<<< HEAD
+
 mongoose.connect(process.env.MONGO_URL, {
      useNewUrlParser: true});
 
-// const db = mongoose.connection;
-// db.once('open', () => console.log("Successfully Connected to Database"));
-=======
-mongoose.set('strictQuery', false);
 
-mongoose.connect(process.env.MONGO_URL);
->>>>>>> cd1cc715f1cac52ce116bef25ea2a30dfc0494cf
+// mongoose.set('strictQuery', false);
+
+// mongoose.connect(process.env.MONGO_URL);
+
 
 
 const noteSchema = {title: String, content: String};
