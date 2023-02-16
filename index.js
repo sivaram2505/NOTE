@@ -12,15 +12,34 @@ app.use(express.json());
 app.use(cors());
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URL);
+mongoose.connect(process.env.MONGO_URL, {
+     useNewUrlParser: true});
+// mongoose.connect("mongodb+srv://ram25:ram25@cluster0.hpfnaob.mongodb.net/noteDB", {
+//     useNewUrlParser: true
+//     // useUnifiedTopology: true,
+//     // useCreateIndex: true
+// });
 
-//const db = mongoose.connection;
-//db.once('open', () => console.log("Successfully Connected to Database"));
+// const db = mongoose.connection;
+// db.once('open', () => console.log("Successfully Connected to Database"));
+
 
 const noteSchema = {title: String, content: String};
 const note = mongoose.model("note",noteSchema);
 
+app.get("/", function (req,res){
 
+    note.find((err,result) => {
+        if(err){
+            console.log(err);
+        } else{
+            res.json(result);
+
+            console.log("Responded to Get Request on /");
+            // console.log(result);
+        }
+    });
+});
 app.get("/getnotes", function (req,res){
 
     note.find((err,result) => {
@@ -60,13 +79,13 @@ app.post("/delete", function(req,res){
         }
     });
 });
-if (process.env.NODE_ENV === 'production'){
-app.use(express.static(path.join(__dirname, "/client/build")));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, "/client/build/index.html"));
-});
-}
+// if (process.env.NODE_ENV === 'production'){
+// app.use(express.static(path.join(__dirname, "/client/build")));
+//
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, "/client/build/index.html"));
+// });
+// }
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 4000;

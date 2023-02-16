@@ -11,6 +11,7 @@ const url = "https://notes12345.herokuapp.com";
 export default function App() {
   const [notes, setNotes] = useState([]);
 
+
   useEffect(() => {
     axios.get(url+"/getnotes")
     .then((res)=>{
