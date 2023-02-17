@@ -13,11 +13,12 @@ app.use(cors());
 dotenv.config();
 
 
+mongoose.set('strictQuery', false);
 mongoose.connect(process.env.MONGO_URL, {
      useNewUrlParser: true});
 
 
-// mongoose.set('strictQuery', false);
+ 
 
 // mongoose.connect(process.env.MONGO_URL);
 
